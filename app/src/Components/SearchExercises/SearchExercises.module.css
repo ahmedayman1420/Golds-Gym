@@ -1,0 +1,5 @@
+.searchInput:focus {
+  outline: none !important;
+  border-color: #c04545 !important;
+  box-shadow: 0 0 8px #c04545 !important;
+}
