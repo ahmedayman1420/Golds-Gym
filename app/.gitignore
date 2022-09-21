@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.gitignore
 /.pnp
 .pnp.js
 
@@ -18,6 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*
