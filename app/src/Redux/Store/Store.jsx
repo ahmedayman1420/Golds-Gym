@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import reducers from "../Reducers";
 
 const initialState = {
-  gemData: { bodyParts: [], exercises: [] },
+  gemData: { bodyParts: [], exercises: [], searchResults: [] },
 };
 
 export const store = createStore(

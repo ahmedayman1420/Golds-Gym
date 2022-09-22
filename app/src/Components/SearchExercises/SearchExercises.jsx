@@ -4,10 +4,6 @@ import React, { useEffect, useState } from "react";
 // ========---======== < React-Bootstrap > ========---======== //
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Spinner from "react-bootstrap/Spinner";
-
-// ========---======== < Util-Functions > ========---======== //
-import { excuteFetchData } from "../../Utils/FetchData";
 
 // ========---======== < Style > ========---======== //
 import Style from "./SearchExercises.module.css";
@@ -15,11 +11,8 @@ import Style from "./SearchExercises.module.css";
 // ======= --- ======= <| React-Redux |> ======= --- ======= //
 import { useDispatch, useSelector } from "react-redux";
 
-// ========---======== < Exercise-Actions > ========---======== //
-import {
-  setBodyPartsAction,
-  setExercisesAction,
-} from "../../Redux/Actions/ExerciseActions";
+// ========---======== < Exercises-Actions > ========---======== //
+import { searchResultsAction } from "../../Redux/Actions/ExerciseActions";
 
 // ========---======== < Search-Regex > ========---======== //
 export const validSearchWord = new RegExp(
@@ -30,12 +23,9 @@ export const validSearchWord = new RegExp(
 // ========---======== < Component > ========---======== //
 function SearchExercises() {
   const dispatch = useDispatch();
-  let gemData = useSelector((state) => state.gemData);
-
   // ========---======== < Component-State > ========---======== //
   const [searchWord, setSearchWord] = useState("");
-  const [waiting, setWaiting] = useState(false);
-  const [exercises, setExercises] = useState([]);
+  let gemData = useSelector((state) => state.gemData);
 
   // ========---======== < Component-Function > ========---======== //
 
@@ -46,36 +36,17 @@ function SearchExercises() {
         ex.name.includes(searchWord) ||
         ex.equipment.includes(searchWord) ||
         ex.target.includes(searchWord) ||
-        ex.target.includes(searchWord)
+        ex.bodyPart.includes(searchWord)
       );
     });
-    setExercises(data);
-    setSearchWord("");
+
+    dispatch(searchResultsAction(data));
   };
 
-  const getBodyParts = async () => {
-    let url = "https://exercisedb.p.rapidapi.com/exercises/bodyPartList";
-    const response = await excuteFetchData(url);
-    dispatch(setBodyPartsAction(response.data));
-  };
-
-  const getExercises = async () => {
-    let url = "https://exercisedb.p.rapidapi.com/exercises";
-    const response = await excuteFetchData(url);
-    dispatch(setExercisesAction(response.data));
-  };
-
-  useEffect(() => {
-    getBodyParts();
-    getExercises();
-  }, []);
-
-  console.log(gemData);
-  console.log(exercises);
   return (
     // ========---======== < Component-JSX > ========---======== //
     <>
-      <div className="mt-5 pt-5">
+      <div className="mt-5pt-5">
         <div className="overflow-auto mt-5 pt-5">
           <h2
             className="text-center"
@@ -108,7 +79,7 @@ function SearchExercises() {
                   top: "0",
                   right: "0",
                 }}
-                disabled={!validSearchWord.test(searchWord) || waiting}
+                disabled={!validSearchWord.test(searchWord)}
               >
                 Search
               </Button>

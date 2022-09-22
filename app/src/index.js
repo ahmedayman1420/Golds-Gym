@@ -8,6 +8,9 @@ import reportWebVitals from "./reportWebVitals";
 // ========---======== < Bootstrap-Css > ========---======== //
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// ========---======== < Pagination-Css > ========---======== //
+import "rc-pagination/assets/index.css";
+
 // ========---======== < React-Router-Dom > ========---======== //
 import { BrowserRouter } from "react-router-dom";
 
