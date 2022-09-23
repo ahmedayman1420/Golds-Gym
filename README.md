@@ -15,7 +15,6 @@ React Fitness Application
 ![chrome_asOAgjpOn4](https://user-images.githubusercontent.com/76254195/191960750-e01f7aa1-3be1-41a5-8a61-23205f307f36.png)
 ![Uploadin![![chrome_12FGwpckJ8](https://user-images.githubusercontent.com/76254195/191960800-bd3c0432-5d75-4b34-af69-54801303f2b4.png)
 ![chrome_XF77BeAhUq](https://user-images.githubusercontent.com/76254195/191960776-1c008a67-bf98-4ce2-b343-87853cf4734e.png)
-![chrome_12FGwpckJ8](https://user-images.githubusercontent.com/76254195/191960840-47e0dce6-b030-4124-9ca4-e4ae39f9fe52.png)
 
 ## App Link: https://cmp-gem.netlify.app/
 ## Try & not forget the star
