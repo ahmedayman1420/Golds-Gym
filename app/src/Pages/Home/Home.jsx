@@ -58,7 +58,7 @@ function Home() {
           <div
             className="d-flex justify-content-center align-items-center"
             style={{
-              height: "500px",
+              height: "490px",
             }}
           >
             <Spinner animation="grow" variant="primary" />
@@ -72,7 +72,7 @@ function Home() {
           <HeroBanner />
           <SearchExercises />
           <HorizontalScrollExercises />
-          <Exercises />
+          <Exercises data={gemData.searchResults} title="Showing Results" />
         </>
       )}
     </>

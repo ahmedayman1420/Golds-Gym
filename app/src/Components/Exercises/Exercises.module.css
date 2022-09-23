@@ -1,0 +1,8 @@
+.cardImg:hover {
+  cursor: pointer;
+}
+
+
+.ex:hover {
+  border: none !important;
+}

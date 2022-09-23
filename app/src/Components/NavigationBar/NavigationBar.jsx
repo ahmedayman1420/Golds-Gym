@@ -30,7 +30,7 @@ function NavigationBar() {
             <Nav.Link as={NavLink} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/exercises">
+            <Nav.Link as={NavLink} to="/">
               Exercises
             </Nav.Link>
           </Nav>

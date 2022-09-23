@@ -44,7 +44,7 @@ function HeroBanner() {
                 <Button
                   variant="danger"
                   onClick={() => {
-                    navigate("/exercises");
+                    window.scrollTo({ top: 1250, behavior: "smooth" });
                   }}
                 >
                   Explore Exercises

@@ -5,6 +5,12 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+// ======= --- ======= <| Style |> ======= --- ======= //
+import Style from "./Exercises.module.css";
+
+// ======= --- ======= <| React-Router-Dom |> ======= --- ======= //
+import { useNavigate } from "react-router-dom";
+
 // ======= --- ======= <| External-Components |> ======= --- ======= //
 import Pagination from "rc-pagination";
 
@@ -12,9 +18,9 @@ import Pagination from "rc-pagination";
 import { useDispatch, useSelector } from "react-redux";
 
 // ========---======== < Component > ========---======== //
-function Exercises() {
+function Exercises({ data, title }) {
   const dispatch = useDispatch();
-  let gemData = useSelector((state) => state.gemData);
+  let navigate = useNavigate();
 
   // ========---======== < Component-State > ========---======== //
   let [currentPage, setCurrentPage] = useState(1);
@@ -25,9 +31,9 @@ function Exercises() {
     <>
       <div className="mt-5 py-5">
         <div className="container">
-          <h2>Showing Results</h2>
+          <h2>{title}</h2>
           <div className="row mt-4">
-            {gemData.searchResults
+            {data
               .slice((currentPage - 1) * 9, (currentPage - 1) * 9 + 9)
               .map((ex, i) => {
                 return (
@@ -35,6 +41,7 @@ function Exercises() {
                     <Card className="border-0">
                       <div className="p-5">
                         <div
+                          className={Style.ex}
                           style={{
                             borderTop: "solid #ff2526 5px",
                           }}
@@ -42,8 +49,11 @@ function Exercises() {
                           <Card.Img
                             variant="top"
                             src={ex.gifUrl}
-                            className="w-100"
+                            className={["w-100", Style.cardImg].join(" ")}
                             loading="lazy"
+                            onClick={() => {
+                              navigate(`/exercise/details/${ex.id}`);
+                            }}
                           />
                           <Card.Body>
                             <Button
@@ -77,12 +87,12 @@ function Exercises() {
               })}
           </div>
           <div className="d-flex justify-content-center">
-            {gemData.searchResults.length > 9 && (
+            {data.length > 9 && (
               <Pagination
                 current={currentPage}
                 defaultPageSize={9}
                 pageSize={9}
-                total={gemData.searchResults.length}
+                total={data.length}
                 onChange={async (current, pageSize) => {
                   setCurrentPage(current);
                   window.scrollTo({ top: 1250, behavior: "smooth" });

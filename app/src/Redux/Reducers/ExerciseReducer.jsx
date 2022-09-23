@@ -2,11 +2,19 @@
 import {
   SET_BODY_PARTS,
   SET_EXERCISES,
+  SET_EXERCISE_DETAILS,
   SET_SEARCH_RESULTS,
+  SET_EXERCISE_VIDEOS,
 } from "../Actions/ActionStrings";
 
 const exerciseReducer = (
-  state = { bodyParts: [], exercises: [], searchResults: [] },
+  state = {
+    bodyParts: [],
+    exercises: [],
+    searchResults: [],
+    exercise: [],
+    videos: [],
+  },
   action
 ) => {
   switch (action.type) {
@@ -22,6 +30,12 @@ const exerciseReducer = (
 
     case SET_SEARCH_RESULTS:
       return { ...state, searchResults: action.payload };
+
+    case SET_EXERCISE_DETAILS:
+      return { ...state, exercise: action.payload };
+
+    case SET_EXERCISE_VIDEOS:
+      return { ...state, videos: action.payload };
 
     default:
       return state;

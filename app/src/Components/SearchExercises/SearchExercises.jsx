@@ -39,8 +39,9 @@ function SearchExercises() {
         ex.bodyPart.includes(searchWord)
       );
     });
-
     dispatch(searchResultsAction(data));
+
+    window.scrollTo({ top: 1250, behavior: "smooth" });
   };
 
   return (
